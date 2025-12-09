@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://7tn0rtqiy42e"]
+
+[ext_resource type="Texture2D" uid="uid://nhlve01yi854" path="res://sprites/mummy.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://0rvdetwm2mcr" path="res://scenes/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
+size = Vector2(55, 55)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_md0e3")
+
+[node name="KillArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+position = Vector2(-0.25, 0)
+shape = SubResource("RectangleShape2D_4ra3w")
+
+[connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
