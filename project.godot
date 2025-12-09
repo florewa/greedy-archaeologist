@@ -14,3 +14,11 @@ config/name="GreedyArchaeologist"
 run/main_scene="uid://sint0p1fofv5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://scenes/": "red",
+"res://scenes/levels/": "pink",
+"res://sprites/": "green"
+}

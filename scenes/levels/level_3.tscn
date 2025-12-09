@@ -1,0 +1,71 @@
+[gd_scene load_steps=14 format=4 uid="uid://dast1wl26pcyk"]
+
+[ext_resource type="Script" uid="uid://dlkrrrvsm25f3" path="res://scenes/main.gd" id="1_wae8j"]
+[ext_resource type="PackedScene" uid="uid://kf24ryn4n4dn" path="res://scenes/player.tscn" id="2_ha73p"]
+[ext_resource type="Texture2D" uid="uid://p7gk346ggdm7" path="res://sprites/wall.png" id="3_vcx5n"]
+[ext_resource type="Texture2D" uid="uid://dk2ih4y4sauaq" path="res://sprites/floor.png" id="4_56dhn"]
+[ext_resource type="Texture2D" uid="uid://bx2hkat6hwhjs" path="res://sprites/pit.png" id="5_ax3dk"]
+[ext_resource type="Texture2D" uid="uid://2h7mje1t82k8" path="res://sprites/floor_cracked.png" id="6_q2dsb"]
+[ext_resource type="PackedScene" uid="uid://bql8neqo0p7ji" path="res://scenes/coin.tscn" id="7_p3r0x"]
+[ext_resource type="PackedScene" uid="uid://crqpivpofvkqi" path="res://scenes/door.tscn" id="8_wae8j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
+texture = ExtResource("3_vcx5n")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tefeu"]
+texture = ExtResource("4_56dhn")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ya4ey"]
+texture = ExtResource("5_ax3dk")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
+texture = ExtResource("6_q2dsb")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o6xl0"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_tbgi4")
+sources/1 = SubResource("TileSetAtlasSource_tefeu")
+sources/2 = SubResource("TileSetAtlasSource_ya4ey")
+sources/3 = SubResource("TileSetAtlasSource_eb6dy")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_wae8j")
+next_level_path = "uid://crccfq1ohxayx"
+
+[node name="Player" parent="." instance=ExtResource("2_ha73p")]
+position = Vector2(96, 480)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAACAAIAAQAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAAAAAAGAAYAAQAAAAAAAAAFAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAQAAAAAAAAABAAUAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAwAAAAAAAAAEAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAABAAYAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAQAAAAAAAAABAAIAAAAAAAAAAAABAAEAAQAAAAAAAAADAAQAAAAAAAAAAAADAAMAAwAAAAAAAAAEAAMAAwAAAAAAAAAAAAgAAAAAAAAAAAABAAcAAQAAAAAAAAACAAcAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAQAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAQAAAAAAAAAHAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAADAAgAAAAAAAAAAAACAAgAAAAAAAAAAAABAAgAAAAAAAAAAAAFAAMAAwAAAAAAAAAFAAIAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_o6xl0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 106.0
+offset_bottom = 53.0
+text = "Coins: 0/0"
+
+[node name="Door" parent="." instance=ExtResource("8_wae8j")]
+position = Vector2(160, 32)
+
+[node name="Coin" parent="." instance=ExtResource("7_p3r0x")]
+position = Vector2(480, 96)
+
+[node name="Coin2" parent="." instance=ExtResource("7_p3r0x")]
+position = Vector2(480, 480)
+
+[connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]
