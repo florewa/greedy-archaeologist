@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://euaxx3t7shx"]
+
+[ext_resource type="Script" uid="uid://2lvn77e5u2u6" path="res://plate.gd" id="1_2x0a8"]
+[ext_resource type="Texture2D" uid="uid://dafy46nvygd6c" path="res://sprites/plate_up.png" id="2_qy4xk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0qvw"]
+size = Vector2(40, 40)
+
+[node name="Plate" type="Area2D"]
+script = ExtResource("1_2x0a8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qy4xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e0qvw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

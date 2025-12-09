@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b2paaibgqybyd"]
+[gd_scene load_steps=17 format=4 uid="uid://b2paaibgqybyd"]
 
 [ext_resource type="PackedScene" uid="uid://kf24ryn4n4dn" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dlkrrrvsm25f3" path="res://scenes/main.gd" id="1_tefeu"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://crqpivpofvkqi" path="res://scenes/door.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://2h7mje1t82k8" path="res://sprites/floor_cracked.png" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://7tn0rtqiy42e" path="res://scenes/enemy.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://5x3hugkhdu0u" path="res://scenes/gate.tscn" id="10_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://euaxx3t7shx" path="res://scenes/plate.tscn" id="11_eb6dy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
 texture = ExtResource("2_sugp2")
@@ -76,3 +78,11 @@ text = "Coins: 0/0"
 
 [node name="Enemy" parent="." instance=ExtResource("7_o6xl0")]
 position = Vector2(-288, 96)
+
+[node name="Gate" parent="." instance=ExtResource("10_ya4ey")]
+position = Vector2(138, -155)
+
+[node name="Plate" parent="." instance=ExtResource("11_eb6dy")]
+position = Vector2(480, 161)
+
+[connection signal="activated" from="Plate" to="Gate" method="open_gate"]
