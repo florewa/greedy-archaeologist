@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=4 uid="uid://b2paaibgqybyd"]
+
+[ext_resource type="PackedScene" uid="uid://kf24ryn4n4dn" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://dlkrrrvsm25f3" path="res://scenes/main.gd" id="1_tefeu"]
+[ext_resource type="Texture2D" uid="uid://p7gk346ggdm7" path="res://sprites/wall.png" id="2_sugp2"]
+[ext_resource type="Texture2D" uid="uid://dk2ih4y4sauaq" path="res://sprites/floor.png" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bql8neqo0p7ji" path="res://scenes/coin.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://crqpivpofvkqi" path="res://scenes/door.tscn" id="5_tbgi4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
+texture = ExtResource("2_sugp2")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tefeu"]
+texture = ExtResource("3_jyhfs")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o6xl0"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_tbgi4")
+sources/1 = SubResource("TileSetAtlasSource_tefeu")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tefeu")
+
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(32, -32)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD6//v/AAAAAAAAAAD7//v/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wAAAAAAAAAAAAD6////AAAAAAAAAAD6//7/AAAAAAAAAAD6//3/AAAAAAAAAAD6//z/AAAAAAAAAAAAAP7/AQAAAAAAAAD///7/AQAAAAAAAAD///3/AQAAAAAAAAD+//3/AQAAAAAAAAD9//3/AQAAAAAAAAD7//z/AQAAAAAAAAD8//z/AQAAAAAAAAD9//z/AQAAAAAAAAD+//z/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/AQAAAAAAAAAEAPz/AQAAAAAAAAAFAPz/AQAAAAAAAAAGAPz/AQAAAAAAAAAHAPz/AQAAAAAAAAAHAP3/AQAAAAAAAAAGAP3/AQAAAAAAAAAFAP3/AQAAAAAAAAAEAP3/AQAAAAAAAAADAP3/AQAAAAAAAAACAP3/AQAAAAAAAAABAP3/AQAAAAAAAAAAAP3/AQAAAAAAAAD8//3/AQAAAAAAAAD7//3/AQAAAAAAAAD7//7/AQAAAAAAAAD8//7/AQAAAAAAAAD9//7/AQAAAAAAAAD+//7/AQAAAAAAAAAFAP7/AQAAAAAAAAAGAP7/AQAAAAAAAAAHAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAADAP7/AQAAAAAAAAACAP7/AQAAAAAAAAABAP7/AQAAAAAAAAD7////AQAAAAAAAAD8////AQAAAAAAAAD9////AQAAAAAAAAD+////AQAAAAAAAAD/////AQAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//AQAAAAAAAAAEAP//AQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AQAAAAAAAAAHAP//AQAAAAAAAAAHAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAADAAAAAQAAAAAAAAACAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+/wAAAQAAAAAAAAD9/wAAAQAAAAAAAAD8/wAAAQAAAAAAAAD7/wAAAQAAAAAAAAD7/wEAAQAAAAAAAAD8/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAGAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAADAAIAAQAAAAAAAAACAAIAAQAAAAAAAAABAAIAAQAAAAAAAAAAAAIAAQAAAAAAAAD//wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_o6xl0")
+
+[node name="Coin" parent="." instance=ExtResource("4_jyhfs")]
+position = Vector2(224, 32)
+
+[node name="Coin2" parent="." instance=ExtResource("4_jyhfs")]
+position = Vector2(-224, -160)
+
+[node name="Coin3" parent="." instance=ExtResource("4_jyhfs")]
+position = Vector2(224, -160)
+
+[node name="Coin4" parent="." instance=ExtResource("4_jyhfs")]
+position = Vector2(-160, 160)
+
+[node name="Door" parent="." instance=ExtResource("5_tbgi4")]
+position = Vector2(544, -32)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 106.0
+offset_bottom = 53.0
+text = "Coins: 0/0"
