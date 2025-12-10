@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://brkmtu3n7nni1"]
+
+[ext_resource type="Script" uid="uid://byuacausxt07x" path="res://scenes/audio_manager.gd" id="1_liach"]
+[ext_resource type="AudioStream" uid="uid://dthlqlcv2kk5m" path="res://sounds/music.mp3" id="2_3asnw"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_liach")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3asnw")
+autoplay = true
+parameters/looping = false
+
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]

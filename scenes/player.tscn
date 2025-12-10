@@ -1,25 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://kf24ryn4n4dn"]
+[gd_scene load_steps=11 format=3 uid="uid://kf24ryn4n4dn"]
 
-[ext_resource type="Texture2D" uid="uid://p8u4um0qtjoe" path="res://sprites/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c87uy0fs5ug8v" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://i2iutjlfxk5n" path="res://sprites/player_anims/idle.png" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://dd5mmlmeekr3w" path="res://sprites/player_anims/run_up_1.png" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://00ny1mij6h4u" path="res://sprites/player_anims/run_down_1.png" id="3_smehm"]
+[ext_resource type="Texture2D" uid="uid://cmk5hrmyhvn36" path="res://sprites/player_anims/run_up_2.png" id="4_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://bl0o50qfrfinb" path="res://sprites/player_anims/run_down_2.png" id="4_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://cj7qq3po673u5" path="res://sprites/player_anims/run_side_1.png" id="5_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://dquw7tb282l4f" path="res://sprites/player_anims/run_side_2.png" id="6_d2wvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(64, 64)
+size = Vector2(30, 51)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dqkch")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_smehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ur7pv")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_y4r1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d2wvv")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qlg0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tuyoq")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 10.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 script = ExtResource("1_g2els")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3vyb7")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 64)
+hit_from_inside = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g2els")
+animation = &"idle"

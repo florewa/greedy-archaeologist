@@ -1,22 +1,15 @@
 extends Area2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-# Объявляем свой собственный сигнал
+# Создаем свой сигнал, чтобы сообщить Уровню, что монетку подобрали
 signal coin_collected
 
+# Когда что-то входит в зону монетки
 func _on_body_entered(body):
+	# Проверяем, что это именно Игрок (а не враг)
 	if body.is_in_group("player"):
-		# Сначала кричим "Меня собрали!"
+		# 1. Просим AudioManager сыграть звук
+		AudioManager.play_coin_sfx()
+		# 2. Отправляем сигнал скрипту уровня
 		coin_collected.emit()
-		# А потом исчезаем
+		# 3. Удаляем монетку из мира
 		queue_free()
