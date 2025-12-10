@@ -17,8 +17,7 @@ func _physics_process(delta):
 		# Если ударилась - меняем направление на противоположное
 		direction = direction * -1
 		
-		# (Опционально) Отражаем картинку, чтобы смотрела в нужную сторону
-		# $Sprite2D.flip_h = direction.x < 0
+		$Sprite2D.flip_h = direction.x < 0
 
 
 func _on_kill_area_body_entered(body):

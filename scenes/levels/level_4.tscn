@@ -80,4 +80,7 @@ position = Vector2(352, 160)
 [node name="Enemy2" parent="." instance=ExtResource("7_g31h8")]
 position = Vector2(160, 352)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(288, 256)
+
 [connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]

@@ -94,4 +94,7 @@ position = Vector2(160, 288)
 [node name="Plate" parent="." instance=ExtResource("11_dwyms")]
 position = Vector2(96, 96)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(352, 288)
+
 [connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]

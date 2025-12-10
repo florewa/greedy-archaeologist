@@ -20,21 +20,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.000165648, 0.012478349, 0.1580497, 1)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 417.0
-offset_top = 27.0
-offset_right = 737.0
-offset_bottom = 72.0
-theme_override_font_sizes/font_size = 32
-text = "ALCHNYI ARHEOLOG"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 500.0
-offset_right = 687.0
-offset_bottom = 566.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -33.0
+offset_right = 118.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -43,6 +41,21 @@ text = "IGRAT"
 [node name="quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "VYHOD"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_right = 160.0
+offset_bottom = 45.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ALCHNYI ARHEOLOG"
 
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
