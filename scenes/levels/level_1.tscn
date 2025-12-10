@@ -9,7 +9,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_2os1m")
-next_level_path = "uid://b2kxy6uawmbw1"
+next_level_path = "uid://beqb1fsjfaeq5"
 
 [node name="Player" parent="." instance=ExtResource("2_go7sj")]
 position = Vector2(96, 416)

@@ -6,7 +6,7 @@ extends Node
 
 # Предзагрузка звуков в память (preload), чтобы они играли мгновенно без лагов
 var coin_sound = preload("res://sounds/coin.wav")
-var door_sound = preload("res://sounds/door.wav") # Проверь расширение (.wav или .mp3)
+var door_sound = preload("res://sounds/door.mp3")
 var victory_sound = preload("res://sounds/victory.mp3") 
 
 func _ready():
